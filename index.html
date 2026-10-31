@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>손톱건선 치료 가이드</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap">
+<style>
+/* Layout: 어두운 전면 표지 → 목차 → 좌측 고정 네비게이션 + 본문 6개 장. 표지·목차·네비게이션·장 제목은 지정 서체(블랙한산스), 본문은 노토 산스 */
+:root{
+  --bg:#F4F6F8; --surface:#FFFFFF; --ink:#0A141B; --muted:#3A4D5C; --line:#D3DDE4;
+  --accent:#0B6B83; --accent-ink:#FFFFFF; --salmon:#E2674B; --salmon-soft:#F9E0D8; --bar:#B9C8D2; --nail:#F1E3DA;
+  --k-all:#33475A; --k-top:#1F7A5C; --k-inj:#B4531E; --k-proc:#6A4BB0; --k-oral:#0E6AA8; --k-bio:#B03A6A;
+  --cv-bg:#0A131A; --cv-ink:#F3F7F9; --cv-mute:#9FB3C0; --cv-line:#26414F;
+  --f-brand:"Black Han Sans","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --radius:12px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C171E; --surface:#14232C; --ink:#F4F9FB; --muted:#B8C9D3; --line:#27404D;
+    --accent:#5CC0D6; --accent-ink:#0C171E; --salmon:#F08A6E; --salmon-soft:#4A2A22; --bar:#3B5565; --nail:#3A3330;
+    --k-all:#A9BDC9; --k-top:#4FD0A0; --k-inj:#F29A5E; --k-proc:#B79CFF; --k-oral:#5CB8F5; --k-bio:#F27BA6;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C171E; --surface:#14232C; --ink:#F4F9FB; --muted:#B8C9D3; --line:#27404D;
+  --accent:#5CC0D6; --accent-ink:#0C171E; --salmon:#F08A6E; --salmon-soft:#4A2A22; --bar:#3B5565; --nail:#3A3330;
+  --k-all:#A9BDC9; --k-top:#4FD0A0; --k-inj:#F29A5E; --k-proc:#B79CFF; --k-oral:#5CB8F5; --k-bio:#F27BA6;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;font-weight:500;line-height:1.75}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--cv-bg)}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--salmon);outline-offset:2px}
+h1,h2,h3,h4,p,ul,ol,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+
+/* ===== 표지 ===== */
+.cover{background:var(--cv-bg);color:var(--cv-ink);position:relative;overflow:hidden}
+.cover-in{max-width:1240px;margin-inline:auto;min-height:min(100vh,760px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:32px;align-items:center;padding-block:clamp(40px,8vw,88px)}
+.eyebrow{font-family:var(--f-brand);letter-spacing:.18em;font-size:.8125rem;color:var(--salmon);display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";height:2px;width:56px;background:var(--salmon)}
+.cover h1{font-family:var(--f-brand);font-weight:400;font-size:clamp(3.4rem,11vw,7.4rem);line-height:1.02;letter-spacing:-.02em;margin:18px 0 8px}
+.cover h1 em{font-style:normal;color:var(--salmon)}
+.cover .ko2{font-family:var(--f-brand);font-size:clamp(1.4rem,3.4vw,2.1rem);letter-spacing:.02em}
+.cover .lead{max-width:44ch;color:var(--cv-mute);font-size:1.0625rem;font-weight:500;margin-top:22px}
+.cover-meta{display:flex;flex-wrap:wrap;gap:0;margin-top:34px;border-top:1px solid var(--cv-line)}
+.cover-meta div{padding:14px 28px 0 0;margin-right:28px;min-width:0}
+.cover-meta b{display:block;font-family:var(--f-brand);font-weight:400;font-size:1.25rem;letter-spacing:.02em}
+.cover-meta span{color:var(--cv-mute);font-size:.8125rem}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:34px;padding:14px 26px;border-radius:999px;background:var(--salmon);color:#1A0E0A;font-family:var(--f-brand);font-size:1.0625rem;text-decoration:none;letter-spacing:.03em}
+.cta:hover{filter:brightness(1.08)}
+.art{width:100%;max-width:440px;justify-self:end;min-width:0}
+.art svg{display:block;width:100%;height:auto}
+
+/* ===== 모바일 상단 바 ===== */
+.topbar{display:none;position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:2px solid var(--ink)}
+.topbar-in{display:flex;align-items:center;gap:8px;min-height:52px}
+.topbar .brand{font-family:var(--f-brand);white-space:nowrap}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+.tabs a{font-family:var(--f-brand);font-size:.9375rem;padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--muted);white-space:nowrap}
+.tabs a[aria-current=true]{background:var(--ink);color:var(--bg)}
+
+/* ===== 레이아웃 ===== */
+.shell{max-width:1240px;margin-inline:auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;padding-bottom:72px}
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 28px);align-self:start;padding-top:72px;height:fit-content}
+.rail h2{font-family:var(--f-brand);font-weight:400;font-size:.875rem;letter-spacing:.2em;color:var(--muted);margin-bottom:14px}
+.rail ol{border-left:2px solid var(--line)}
+.rail a{display:grid;grid-template-columns:2.2rem 1fr;align-items:baseline;padding:9px 0 9px 14px;margin-left:-2px;border-left:4px solid transparent;text-decoration:none;color:var(--muted);font-family:var(--f-brand);font-size:1.0625rem;line-height:1.35}
+.rail a small{font-size:.8125rem;color:var(--muted)}
+.rail a:hover{color:var(--ink)}
+.rail a[aria-current=true]{color:var(--ink);border-left-color:var(--salmon)}
+.rail a[aria-current=true] small{color:var(--salmon)}
+.themebtn{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:8px 14px;border-radius:999px;border:2px solid var(--ink);background:transparent;cursor:pointer;font-family:var(--f-brand);font-size:.875rem;letter-spacing:.04em}
+.themebtn:hover{background:var(--ink);color:var(--bg)}
+.topbar .themebtn{margin:0;padding:6px 12px}
+
+/* ===== 목차 ===== */
+.toc{padding-top:72px}
+.toc ol{border-top:2px solid var(--ink)}
+.toc a{display:grid;grid-template-columns:3.4rem minmax(0,1fr) auto;gap:14px;align-items:center;padding:18px 6px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.toc a:hover{background:var(--surface)}
+.toc .n{font-family:var(--f-brand);font-size:1.9rem;color:var(--salmon);line-height:1}
+.toc .t{font-family:var(--f-brand);font-size:1.375rem;line-height:1.3}
+.toc .d{color:var(--muted);font-size:.9375rem;font-weight:500;margin-top:2px}
+.toc .go{font-family:var(--f-brand);color:var(--muted)}
+
+/* ===== 장 ===== */
+.chap{padding-top:88px;scroll-margin-top:72px}
+.chap-h{display:flex;align-items:baseline;gap:16px;border-bottom:3px solid var(--ink);padding-bottom:14px;margin-bottom:12px;flex-wrap:wrap}
+.chap-h .no{font-family:var(--f-brand);font-size:1.125rem;color:var(--salmon);letter-spacing:.06em}
+.chap-h h2{font-family:var(--f-brand);font-weight:400;font-size:clamp(1.7rem,4.2vw,2.5rem);line-height:1.25;text-wrap:balance}
+.sub{color:var(--muted);max-width:64ch;margin:10px 0 24px;font-weight:500}
+
+/* 손톱 탐색기 */
+.explorer{display:grid;grid-template-columns:minmax(0,330px) minmax(0,1fr);gap:28px;align-items:start}
+.nailbox{background:var(--surface);border:2px solid var(--ink);border-radius:var(--radius);padding:16px}
+.nailsvg{display:block;width:100%;height:auto;max-height:430px}
+.nailsvg .reg{opacity:0;transition:opacity .3s ease}
+.explorer[data-zone=mat] #r-mat{opacity:.4}
+.explorer[data-zone=mat] #g-mat{opacity:.8}
+.explorer[data-zone=bed] #r-bed{opacity:.4}
+.explorer[data-zone=bed] #g-bed{opacity:1}
+.seg{display:flex;gap:8px;margin-top:14px}
+.seg button{flex:1;padding:10px 6px;border-radius:10px;border:2px solid var(--ink);background:var(--bg);cursor:pointer;font-weight:700;font-size:.9375rem}
+.seg button[aria-pressed=true]{background:var(--salmon);border-color:var(--salmon);color:#1A0E0A}
+.panel{background:var(--surface);border:2px solid var(--ink);border-radius:var(--radius);padding:24px;min-width:0}
+.panel h3{font-family:var(--f-brand);font-weight:400;font-size:1.6rem}
+.panel .where{color:var(--muted);margin:4px 0 4px}
+.panel h4{margin:20px 0 8px;font-family:var(--f-brand);font-weight:400;font-size:.875rem;letter-spacing:.14em;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{background:var(--salmon-soft);padding:4px 12px;border-radius:999px;font-size:.9375rem;font-weight:700}
+.first{border-left:5px solid var(--accent);padding:6px 0 6px 16px}
+.first strong{display:block;font-weight:900;font-size:1.0625rem}
+.first span{color:var(--muted)}
+
+/* 수치 띠 */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:2px;background:var(--ink);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;margin-top:32px}
+.fact{background:var(--surface);padding:18px 20px;min-width:0}
+.fact .v{font-family:var(--f-brand);font-size:1.7rem;line-height:1.2;font-variant-numeric:tabular-nums}
+.fact .l{color:var(--muted);font-size:.875rem;margin-top:6px;line-height:1.5}
+
+/* 상황별 */
+.guide{display:grid;gap:10px}
+.grow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 28px;background:var(--surface);border:2px solid var(--line);border-radius:var(--radius);padding:16px 20px}
+.grow .s{color:var(--muted);font-weight:700}
+.grow .f{font-weight:900}
+.grow .n{grid-column:1/-1;color:var(--muted);font-size:.9rem}
+
+/* 치료 */
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.cats{display:flex;flex-wrap:wrap;gap:8px}
+.chipbtn{--k:var(--k-all);font-weight:700;font-size:.9375rem;padding:7px 16px;border-radius:999px;border:2px solid var(--k);background:color-mix(in srgb,var(--k) 14%,var(--surface));cursor:pointer}
+.chipbtn[aria-pressed=true]{background:var(--k);color:var(--accent-ink)}
+.chipbtn[data-c="바르는 약"],.card[data-c="바르는 약"]{--k:var(--k-top)}
+.chipbtn[data-c="주사"],.card[data-c="주사"]{--k:var(--k-inj)}
+.chipbtn[data-c="시술"],.card[data-c="시술"]{--k:var(--k-proc)}
+.chipbtn[data-c="먹는 약"],.card[data-c="먹는 약"]{--k:var(--k-oral)}
+.chipbtn[data-c="생물학적제제"],.card[data-c="생물학적제제"]{--k:var(--k-bio)}
+.search{flex:1;min-width:190px;font:inherit;font-weight:700;padding:9px 16px;border-radius:999px;border:2px solid var(--ink);background:var(--surface);color:var(--ink)}
+.count{color:var(--muted);font-size:.875rem;font-weight:700;width:100%}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr));gap:14px}
+.card{--k:var(--k-all);background:color-mix(in srgb,var(--k) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--k) 45%,var(--line));border-top:6px solid var(--k);border-radius:var(--radius);padding:16px 18px 18px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.card h3{font-weight:900;font-size:1.0625rem;line-height:1.4}
+.tag{align-self:flex-start;font-weight:700;font-size:.75rem;letter-spacing:.05em;padding:2px 11px;border-radius:999px;background:var(--k);color:var(--accent-ink)}
+.card dl{display:grid;gap:10px}
+.card dt{font-family:var(--f-brand);font-size:.75rem;letter-spacing:.12em;color:var(--muted)}
+.card dd{font-size:.9375rem}
+.empty{color:var(--muted);padding:28px 0;font-weight:700}
+
+/* 차트 */
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:14px}
+.chart{background:var(--surface);border:2px solid var(--line);border-radius:var(--radius);padding:18px 20px;min-width:0}
+.chart h3{font-weight:900;font-size:1.0625rem}
+.chart p{margin:2px 0 14px;color:var(--muted);font-size:.875rem;line-height:1.55}
+.brow{display:grid;grid-template-columns:6.6rem minmax(0,1fr) 3.5rem;gap:10px;align-items:center;margin:10px 0;font-size:.9375rem;font-weight:700}
+.track{height:16px;background:var(--bg);border-radius:5px;overflow:hidden}
+.fill{height:100%;background:var(--bar);border-radius:5px}
+.fill.top{background:var(--salmon)}
+.brow .v{text-align:right;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:no-preference){.fill{animation:grow .8s cubic-bezier(.2,.7,.2,1) both}}
+@keyframes grow{from{width:0}}
+.callout{margin-top:16px;padding:14px 18px;border-radius:var(--radius);background:var(--salmon-soft);font-weight:700;font-size:.9375rem}
+
+/* 표·용어 */
+.tbl{background:var(--surface);border:2px solid var(--ink);border-radius:var(--radius);overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:540px}
+th{text-align:left;font-family:var(--f-brand);font-weight:400;font-size:.9375rem;letter-spacing:.06em;padding:12px 18px;background:var(--ink);color:var(--bg)}
+td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:900}
+details.g{background:var(--surface);border:2px solid var(--line);border-radius:var(--radius);padding:0 20px;margin-bottom:8px}
+details.g[open]{border-color:var(--ink)}
+details.g summary{cursor:pointer;padding:14px 0;font-weight:900}
+details.g p{padding-bottom:16px;color:var(--muted)}
+.note{margin-top:72px;padding:18px 22px;border:2px solid var(--ink);border-left:8px solid var(--salmon);border-radius:var(--radius);background:var(--surface);font-weight:700;font-size:.9375rem}
+
+/* ===== 반응형 ===== */
+@media (max-width:1000px){
+  .shell{display:block;padding-bottom:56px}
+  .rail{display:none}
+  .topbar{display:block}
+  .cover-in{grid-template-columns:minmax(0,1fr);min-height:0}
+  .art{justify-self:center;max-width:300px;order:-1}
+  .toc{padding-top:56px}
+  .chap{padding-top:64px;scroll-margin-top:64px}
+}
+@media (max-width:760px){
+  .explorer{grid-template-columns:minmax(0,1fr)}
+  .nailbox{max-width:330px}
+  .grow{grid-template-columns:minmax(0,1fr)}
+  .toc a{grid-template-columns:2.6rem minmax(0,1fr)}
+  .toc .go{display:none}
+  .cover-meta div{margin-right:18px;padding-right:12px}
+}
+html{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
+body{margin:0}
+</style>
+
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+var DATA={"facts": [{"id": "prev", "label": "건선 환자 중 손톱건선 비율(보고 범위)", "value": "10–82%"}, {"id": "life", "label": "일생 중 손톱 변화를 겪는 건선 환자", "value": "80–90%"}, {"id": "isolated", "label": "피부·관절 증상 없이 손톱만 있는 경우", "value": "5–10%"}, {"id": "fungus", "label": "곰팡이(조갑진균증) 동반 비율", "value": "18–30%"}, {"id": "growth", "label": "손톱이 완전히 자라 나오는 기간", "value": "손톱 4–6개월 · 발톱 9–12개월"}], "guide": [{"id": "g1", "situation": "모든 환자 (치료 시작 전)", "first": "곰팡이(조갑진균증) 여부 확인", "note": "곰팡이가 겹쳐 있으면 건선 치료 효과가 가려질 수 있음"}, {"id": "g2", "situation": "손톱 3개 이하 · NAPSI 20 이하 · 조갑기질(손톱 뿌리쪽) 침범", "first": "병변 내 스테로이드 주사 (트리암시놀론)", "note": "조갑기질만 침범한 경우 선택 1순위로 제시됨"}, {"id": "g3", "situation": "조갑바닥(손톱 밑 살)만 침범", "first": "스테로이드 연고 (클로베타솔 등) ± 비타민D 유도체", "note": "손톱 들뜬 부분은 잘라내고 바름"}, {"id": "g4", "situation": "외용제·주사로 잘 안 듣는 경우", "first": "레이저(PDL) 병용 또는 전신치료(먹는약·생물학적제제) 검토", "note": "PDL은 외용제와 함께 쓸 때 추가 옵션"}, {"id": "g5", "situation": "건선관절염 동반", "first": "손톱 중증도와 관계없이 전신치료", "note": "관절 손상 예방 목적"}, {"id": "g6", "situation": "중등도~중증 손톱건선 (기능 저하·삶의 질 저하)", "first": "생물학적제제", "note": "2021 GRAPPA 가이드라인이 임상시험 근거를 이유로 권고"}, {"id": "g7", "situation": "손톱만 있고 외용제에 반응", "first": "전신치료는 보통 권하지 않음", "note": "기능 장애·삶의 질 저하·외용 실패 시에 고려"}], "treatments": [{"option": "스테로이드 연고 (클로베타솔 등)", "category": "바르는 약", "when": "조갑바닥 침범 1차. 조갑기질 침범 시 손톱 뿌리 위 피부 접힘(근위 조갑주름)에 비폐쇄로 바름", "evidence": "조갑바닥 침범의 1차 치료로 제시됨. 다만 바르는 치료 효과는 한계가 있다는 평가", "caution": "피부 얇아짐 등 스테로이드 연고 일반 부작용"}, {"option": "칼시포트리올/베타메타손 복합 연고", "category": "바르는 약", "when": "조갑바닥 침범, 매일 도포", "evidence": "6개월 비교시험에서 트리암시놀론 이온토포레시스와 NAPSI 차이 없음. 16주 소규모 파일럿에서는 주사가 연고보다 효과적", "caution": "장기간 매일 발라야 하는 순응 문제"}, {"option": "타자로텐 0.1% (비타민A 계열 연고)", "category": "바르는 약", "when": "조갑기질·조갑바닥 병변, 중등도", "evidence": "효과는 '보통 수준'. 클로베타솔과 점상 함몰 등에서 차이 없으나 효과가 더 오래 유지", "caution": "자극감 가능"}, {"option": "타크로리무스 0.1% 연고", "category": "바르는 약", "when": "하루 1회, 12주 이상", "evidence": "21명 시험: 12주 NAPSI 23.0→10.0 (무치료 19.3→16.3)", "caution": "소규모 시험"}, {"option": "병변 내 트리암시놀론 주사", "category": "주사", "when": "조갑기질 침범 또는 소수(3개 이하) 손톱의 1차 선택", "evidence": "가장 많이 연구된 치료. 함몰·과각화·들뜸 개선, 과각화에서 효과가 가장 뚜렷. 조갑바닥에서 클로베타솔 연고보다 우월하다는 보고", "caution": "주사 통증이 가장 큰 단점"}, {"option": "병변 내 메토트렉세이트 주사", "category": "주사", "when": "조갑기질 침범 1차 옵션 중 하나", "evidence": "트리암시놀론과 비교한 소규모 연구 3건으로 메타분석이 수행됨", "caution": "근거 수준 낮음, 증례·소규모 연구 중심"}, {"option": "펄스색소레이저 (PDL, 595nm)", "category": "시술", "when": "월 1회씩 6개월, 난치성 손톱에 외용제 병용", "evidence": "타자로텐 병용 시 6개월에 PGA 75% 이상 호전 31.6% (타자로텐 단독 5.3%). 펄스 시간을 늘려도 이득 없고 통증만 증가", "caution": "통증, 효과 연구는 소규모"}, {"option": "트리암시놀론 이온토포레시스 (전기로 약물 침투)", "category": "시술", "when": "월 1회 6개월", "evidence": "매일 바르는 복합 연고와 효과 동등. 안전하고 순응 쉬움", "caution": "소규모 시험(양손 비교)"}, {"option": "광선치료 (PUVA)", "category": "시술", "when": "과거 사용된 치료", "evidence": "1980년 10명 연구에서 70% 호전 (근거 오래되고 소규모)", "caution": "최근 근거 부족"}, {"option": "메토트렉세이트 (먹는 약)", "category": "먹는 약", "when": "피부 증상이 함께 심할 때", "evidence": "66명 후향연구: 12주 NAPSI 평균 16.4→13.0. 한 분석에서는 16주에 전통 약제가 대조군과 NAPSI 유의차 없음 (PASI는 감소)", "caution": "간 수치 등 채혈 모니터링 필요"}, {"option": "아시트레틴 (먹는 비타민A 계열)", "category": "먹는 약", "when": "외용 실패 시 NPF 권고 약제 중 하나", "evidence": "NPF 2014 권고 목록에 포함", "caution": "비타민A 계열 약제의 일반 주의사항"}, {"option": "아프레밀라스트 (PDE4 억제제)", "category": "먹는 약", "when": "중등도~중증 건선에 사용되며 손톱도 평가됨", "evidence": "ESTEEM 1·2 (1,255명): 16주 손톱 중증도 22.5–29.0% 감소, 위약은 거의 변화 없음", "caution": "설사·메스꺼움·상기도 감염·두통"}, {"option": "토파시티닙 (JAK 억제제)", "category": "먹는 약", "when": "2021 메타분석에서 16주 효과 1위", "evidence": "IL-17·IL-23·TNF 억제제보다 높은 효과크기(−1.08)", "caution": "미국 FDA는 건선관절염 환자에게 TNF 억제제 실패 후 사용 요구 (심장 사건·감염·암·혈전·사망 경고)"}, {"option": "데우크라바시티닙 (TYK2 억제제)", "category": "먹는 약", "when": "손톱 단독 근거는 아직 증례·소규모 단계", "evidence": "POETYK PSO-1·2 하위분석에서 손톱 평가. 손톱 전용 20명 개방형 시험 등록", "caution": "근거 초기 단계"}, {"option": "TNF 억제제 (에타너셉트·아달리무맙 등)", "category": "생물학적제제", "when": "외용 실패 시 NPF 권고. 에타너셉트는 손톱만 있어도 권고", "evidence": "24주 시점 NAPSI 개선 에타너셉트 74%, 완전 소실 아달리무맙 44.6%", "caution": "감염 위험 등 생물학적제제 공통 주의"}, {"option": "IL-17 억제제 (익세키주맙·세쿠키누맙·브로달루맙·비메키주맙)", "category": "생물학적제제", "when": "손톱 완전 소실을 목표로 할 때 비교분석 상위권", "evidence": "익세키주맙·비메키주맙이 여러 비교분석에서 상위. 아래 차트 참고", "caution": "비교분석은 대부분 간접비교, 근거 확실성 낮음"}, {"option": "IL-12/23·IL-23 억제제 (우스테키누맙·구셀쿠맙)", "category": "생물학적제제", "when": "피부 건선 동반, TNF 불내성 등", "evidence": "완전 소실 확률 우스테키누맙 20.8%, 구셀쿠맙 27.7% (24–26주)", "caution": "IL-17 억제제보다 손톱 효과는 낮은 편으로 추정"}], "outcomes": [{"id": "o01", "group": "nma2023", "drug": "익세키주맙", "value": 46.4}, {"id": "o02", "group": "nma2023", "drug": "브로달루맙", "value": 37.1}, {"id": "o03", "group": "nma2023", "drug": "비메키주맙", "value": 30.3}, {"id": "o04", "group": "nma2022", "drug": "아달리무맙", "value": 28.3}, {"id": "o05", "group": "nma2022", "drug": "구셀쿠맙", "value": 27.7}, {"id": "o06", "group": "nma2022", "drug": "우스테키누맙", "value": 20.8}, {"id": "o07", "group": "nma2022", "drug": "인플릭시맙", "value": 0.8}, {"id": "o08", "group": "ixora", "drug": "익세키주맙", "value": 61.9}, {"id": "o09", "group": "ixora", "drug": "우스테키누맙", "value": 28.6}, {"id": "o10", "group": "radiant", "drug": "비메키주맙", "value": 70.7}, {"id": "o11", "group": "radiant", "drug": "세쿠키누맙", "value": 53.5}, {"id": "o12", "group": "dual", "drug": "비메키주맙", "value": 63.3}, {"id": "o13", "group": "dual", "drug": "세쿠키누맙", "value": 36.1}, {"id": "o14", "group": "nma52", "drug": "비메키주맙", "value": 67.4}, {"id": "o15", "group": "nma52", "drug": "세쿠키누맙", "value": 51.7}, {"id": "o16", "group": "nma52", "drug": "우스테키누맙", "value": 48.0}, {"id": "o17", "group": "improve24", "drug": "브로달루맙", "value": 76.9}, {"id": "o18", "group": "improve24", "drug": "에타너셉트", "value": 74.0}, {"id": "o19", "group": "improve24", "drug": "익세키주맙", "value": 70.5}], "ddx": [{"feature": "점상 함몰 (표면에 바늘로 찍은 듯한 작은 홈)", "psoriasis": "흔함, 잔 홈", "fungus": "드묾"}, {"feature": "조갑박리 (손톱이 바닥에서 들뜸)", "psoriasis": "흔함", "fungus": "흔함"}, {"feature": "손톱 색", "psoriasis": "정상 또는 노랑·갈색", "fungus": "노랑·갈색 (일부 또는 전체)"}, {"feature": "가로 홈", "psoriasis": "드묾", "fungus": "없음"}, {"feature": "기름방울 반점 (손톱 밑 주황빛 얼룩)", "psoriasis": "매우 특이적 소견", "fungus": "해당 없음"}, {"feature": "다른 부위 피부 병변", "psoriasis": "매우 흔함", "fungus": "발·손 무좀이 흔함"}, {"feature": "외상 (손톱 자극)", "psoriasis": "쾨브너 현상으로 병변 유발 가능", "fungus": "중요한 위험인자"}, {"feature": "유전", "psoriasis": "가족력 강함", "fungus": "상염색체 우성 감수성"}], "glossary": [{"term": "조갑기질 (matrix)", "plain": "손톱을 만들어내는 뿌리 부분. 침범되면 점상 함몰, 흰 반점, 손톱 부스러짐이 생김"}, {"term": "조갑바닥 (nail bed)", "plain": "손톱 밑의 살. 침범되면 손톱 들뜸, 기름방울 반점, 손톱 밑 각질, 선상 출혈이 생김"}, {"term": "조갑박리 (onycholysis)", "plain": "손톱이 바닥에서 떨어져 들뜨는 현상"}, {"term": "NAPSI", "plain": "손톱건선 심각도 점수. 손톱 하나를 4등분해 기질·바닥을 각각 채점 (손톱당 0–8점), 손가락 손톱 10개를 합산해 0–80점"}, {"term": "mNAPSI", "plain": "NAPSI를 수정한 점수. 연구에서 같은 목적으로 쓰임"}, {"term": "NAPSI 0 (완전 소실)", "plain": "손톱 병변이 점수상 모두 사라진 상태. 이 대시보드 차트의 기준"}, {"term": "병변 내 주사", "plain": "병이 있는 손톱 주변 조직에 약을 직접 주사하는 방법"}, {"term": "생물학적제제", "plain": "염증을 일으키는 특정 신호물질(TNF, IL-17, IL-23 등)만 막는 주사 약"}, {"term": "TNF·IL-17·IL-23", "plain": "건선 염증을 일으키는 신호물질 이름. 생물학적제제는 이 중 하나를 겨냥함"}, {"term": "JAK·TYK2·PDE4 억제제", "plain": "세포 안의 염증 신호 전달 효소를 막는 먹는 약"}, {"term": "PDL (펄스색소레이저)", "plain": "혈관에 반응하는 595nm 레이저. 건선 손톱의 염증 혈관을 겨냥"}, {"term": "이온토포레시스", "plain": "약한 전류로 약물을 피부·손톱 조직에 밀어 넣는 방법"}, {"term": "쾨브너 현상", "plain": "상처·자극을 받은 자리에 건선이 새로 생기는 현상"}, {"term": "건선관절염 (PsA)", "plain": "건선과 함께 오는 관절염. 손톱건선이 있으면 위험이 높아 관절 증상을 살펴야 함"}, {"term": "PASI", "plain": "피부 건선의 면적·정도를 재는 점수 (손톱은 포함하지 않음)"}, {"term": "네트워크 메타분석", "plain": "직접 비교하지 않은 약들을 여러 시험 결과로 이어서 간접 비교하는 통계 방법"}, {"term": "SUCRA", "plain": "네트워크 메타분석에서 약의 순위를 나타내는 값. 1에 가까울수록 상위"}]};
+(function(){
+  var h=function(t,p){var a=[t,p||null];for(var i=2;i<arguments.length;i++)a.push(arguments[i]);return React.createElement.apply(null,a);};
+  var useState=React.useState,useEffect=React.useEffect,useMemo=React.useMemo;
+
+  var CHAPTERS=[
+    {id:'explore',no:'01',t:'부위별 보기',d:'조갑기질과 조갑바닥, 어디가 문제인지 손톱 그림으로 확인'},
+    {id:'guide',no:'02',t:'상황별 첫 선택',d:'손톱 개수·중증도·관절 증상에 따른 1차 치료'},
+    {id:'options',no:'03',t:'치료 옵션 비교',d:'바르는 약부터 생물학적제제까지 17가지 근거 요약'},
+    {id:'biologics',no:'04',t:'생물학적제제 효과',d:'임상시험과 메타분석의 손톱 소실 비율'},
+    {id:'fungus',no:'05',t:'곰팡이와 구분',d:'손톱건선과 조갑진균증의 감별 포인트'},
+    {id:'terms',no:'06',t:'용어 풀이',d:'NAPSI, 조갑박리 등 전문용어를 쉬운 말로'}
+  ];
+
+  var COVER_SVG='<svg viewBox="0 0 400 520" role="img" aria-label="눈금이 있는 손톱 도해">'+
+    '<defs><clipPath id="cv-plate"><path d="M110 470 L110 190 Q110 60 210 60 Q310 60 310 190 L310 470 Q210 500 110 470 Z"/></clipPath>'+
+    '<linearGradient id="cv-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A3B46"/><stop offset="1" stop-color="#3A4B55"/></linearGradient></defs>'+
+    '<path d="M92 482 L92 188 Q92 40 210 40 Q328 40 328 188 L328 482 Q210 516 92 482 Z" fill="none" stroke="#26414F" stroke-width="2"/>'+
+    '<path d="M110 470 L110 190 Q110 60 210 60 Q310 60 310 190 L310 470 Q210 500 110 470 Z" fill="url(#cv-g)"/>'+
+    '<g clip-path="url(#cv-plate)">'+
+      '<rect x="100" y="330" width="220" height="190" fill="#E2674B" opacity=".55"/>'+
+      '<ellipse cx="210" cy="430" rx="72" ry="44" fill="#F3F7F9" opacity=".18"/>'+
+      '<line x1="210" y1="50" x2="210" y2="510" stroke="#9FB3C0" stroke-width="1" stroke-dasharray="5 5" opacity=".6"/>'+
+      '<line x1="100" y1="330" x2="320" y2="330" stroke="#9FB3C0" stroke-width="1" stroke-dasharray="5 5" opacity=".6"/>'+
+      '<g fill="#F3F7F9" opacity=".85"><circle cx="150" cy="372" r="3.5"/><circle cx="182" cy="360" r="3.5"/><circle cx="236" cy="376" r="3.5"/><circle cx="268" cy="362" r="3.5"/><circle cx="162" cy="404" r="3.5"/><circle cx="256" cy="408" r="3.5"/></g>'+
+      '<ellipse cx="210" cy="250" rx="30" ry="22" fill="#C9822B" opacity=".9"/>'+
+    '</g>'+
+    '<g stroke="#9FB3C0" stroke-width="1.5" font-family="Noto Sans KR,sans-serif" font-size="11" fill="#9FB3C0">'+
+      '<line x1="60" y1="60" x2="60" y2="500"/>'+
+      '<line x1="52" y1="60" x2="68" y2="60"/><line x1="52" y1="170" x2="68" y2="170"/><line x1="52" y1="280" x2="68" y2="280"/><line x1="52" y1="390" x2="68" y2="390"/><line x1="52" y1="500" x2="68" y2="500"/>'+
+      '<text x="14" y="64" stroke="none">0</text><text x="14" y="174" stroke="none">2</text><text x="14" y="284" stroke="none">4</text><text x="14" y="394" stroke="none">6</text><text x="14" y="504" stroke="none">8</text>'+
+    '</g>'+
+    '<g font-family="Noto Sans KR,sans-serif" font-size="12" font-weight="700" fill="#F3F7F9"><text x="340" y="254" text-anchor="end" dx="50">조갑바닥</text><text x="340" y="378" text-anchor="end" dx="50">조갑기질</text></g>'+
+    '<g stroke="#E2674B" stroke-width="1.5"><line x1="246" y1="250" x2="330" y2="250"/><line x1="290" y1="376" x2="330" y2="376"/></g>'+
+  '</svg>';
+
+  var NAIL_SVG='<svg class="nailsvg" viewBox="0 0 240 320" role="img" aria-label="손톱 구조 도해">'+
+    '<defs><clipPath id="plate"><path d="M52 292 L52 120 Q52 36 120 36 Q188 36 188 120 L188 292 Q120 312 52 292 Z"/></clipPath></defs>'+
+    '<path d="M40 300 L40 118 Q40 24 120 24 Q200 24 200 118 L200 300 Q120 322 40 300 Z" fill="none" stroke="var(--line)" stroke-width="2"/>'+
+    '<path d="M52 292 L52 120 Q52 36 120 36 Q188 36 188 120 L188 292 Q120 312 52 292 Z" fill="var(--nail)"/>'+
+    '<g clip-path="url(#plate)">'+
+      '<rect id="r-bed" class="reg" x="40" y="30" width="170" height="168" fill="var(--salmon)"/>'+
+      '<rect id="r-mat" class="reg" x="40" y="198" width="170" height="130" fill="var(--salmon)"/>'+
+      '<ellipse cx="120" cy="262" rx="46" ry="30" fill="var(--surface)" opacity=".55"/>'+
+      '<line x1="120" y1="30" x2="120" y2="330" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4" opacity=".6"/>'+
+      '<line x1="40" y1="198" x2="210" y2="198" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4" opacity=".6"/>'+
+      '<g id="g-mat" class="reg" fill="var(--ink)"><circle cx="84" cy="236" r="3"/><circle cx="106" cy="226" r="3"/><circle cx="132" cy="240" r="3"/><circle cx="154" cy="228" r="3"/><circle cx="96" cy="258" r="3"/><circle cx="144" cy="262" r="3"/></g>'+
+      '<g id="g-bed" class="reg"><path d="M52 62 Q120 20 188 62 L188 120 L52 120 Z" fill="var(--surface)" opacity=".85"/><ellipse cx="120" cy="150" rx="22" ry="16" fill="#C9822B" opacity=".9"/></g>'+
+    '</g>'+
+    '<g font-size="11" font-weight="700" fill="var(--muted)" text-anchor="end" font-family="Noto Sans KR,sans-serif"><text x="214" y="116">손톱 끝</text><text x="214" y="190">조갑바닥</text><text x="214" y="262">조갑기질</text><text x="214" y="302">뿌리</text></g>'+
+  '</svg>';
+
+  var ZONES={
+    mat:{title:'조갑기질 침범',where:'손톱을 만드는 뿌리 부분',
+      signs:['점상 함몰 (표면의 작은 홈)','흰 반점','손톱 부스러짐','반달(루눌라)의 붉은 점','가로 줄(보 선)'],
+      first:'병변 내 스테로이드 주사 (트리암시놀론) 또는 메토트렉세이트 주사',
+      note:'손톱 3개 이하, NAPSI 20 이하일 때 1차로 제시됩니다. 바르는 약을 쓸 때는 손톱 뿌리 위 피부 접힘에 막지 않고 바릅니다.'},
+    bed:{title:'조갑바닥 침범',where:'손톱 밑의 살',
+      signs:['손톱 들뜸 (조갑박리)','기름방울 반점 (주황빛 얼룩)','손톱 밑 각질','선상 출혈','연어색 반점'],
+      first:'스테로이드 연고 (클로베타솔 등) ± 비타민D 유도체',
+      note:'들뜬 손톱 조각은 잘라내고 바릅니다. 바르는 치료의 효과는 한계가 있다는 평가가 있어 주사나 전신치료로 넘어가기도 합니다.'}
+  };
+
+  var GROUPS=[
+    ['ixora','IXORA-S 직접비교','52주 손톱 완전 소실(NAPSI 0) 비율'],
+    ['radiant','BE RADIANT 직접비교','48주 손톱 완전 소실(mNAPSI 0) 비율'],
+    ['dual','피부와 손톱 동시 소실','48주 피부 PASI 100과 손톱 mNAPSI 0을 함께 달성한 비율'],
+    ['nma2023','메타분석 추정 (2023)','24–28주 손톱 완전 소실 확률'],
+    ['nma2022','메타분석 추정 (2022)','24–26주 손톱 완전 소실 확률'],
+    ['nma52','메타분석 추정 (장기)','48–52주 손톱 완전 소실 확률'],
+    ['improve24','체계적 고찰','24주 NAPSI 평균 개선률']
+  ];
+  var CATS=['전체','바르는 약','주사','시술','먹는 약','생물학적제제'];
+  var f1=function(v){return (Math.round(v*10)/10).toFixed(1)+'%';};
+
+  function Chap(p){
+    return h('section',{className:'chap',id:p.c.id},
+      h('div',{className:'chap-h'},h('span',{className:'no'},'CHAPTER '+p.c.no),h('h2',null,p.c.t)),
+      p.sub?h('p',{className:'sub'},p.sub):null,
+      p.children);
+  }
+
+  function Cover(){
+    return h('header',{className:'cover',id:'cover'},
+      h('div',{className:'cover-in pad'},
+        h('div',null,
+          h('div',{className:'eyebrow'},'NAIL PSORIASIS GUIDE'),
+          h('h1',null,'손톱',h('em',null,'건선')),
+          h('div',{className:'ko2'},'치료 가이드'),
+          h('p',{className:'lead'},'침범 부위, 손톱 개수, 피부·관절 증상에 따라 치료가 달라집니다. 논문과 리뷰로 정리한 상황별 선택과 치료 비교입니다.'),
+          h('div',{className:'cover-meta'},
+            h('div',null,h('b',null,'17가지'),h('span',null,'치료 옵션')),
+            h('div',null,h('b',null,'6개 장'),h('span',null,'부위부터 용어까지')),
+            h('div',null,h('b',null,'2026.11'),h('span',null,'조사 기준'))),
+          h('a',{className:'cta',href:'#toc'},'목차 보기 ↓')),
+        h('div',{className:'art',dangerouslySetInnerHTML:{__html:COVER_SVG}})));
+  }
+
+  function Toc(){
+    return h('section',{className:'toc',id:'toc'},
+      h('div',{className:'chap-h'},h('span',{className:'no'},'CONTENTS'),h('h2',null,'목차')),
+      h('ol',null,CHAPTERS.map(function(c){
+        return h('li',{key:c.id},h('a',{href:'#'+c.id},
+          h('span',{className:'n'},c.no),
+          h('span',null,h('div',{className:'t'},c.t),h('div',{className:'d'},c.d)),
+          h('span',{className:'go'},'→')));
+      })));
+  }
+
+  function Explorer(){
+    var s=useState('mat'),zone=s[0],setZone=s[1],z=ZONES[zone];
+    return h('div',null,
+      h('div',{className:'explorer','data-zone':zone},
+        h('div',{className:'nailbox'},
+          h('div',{dangerouslySetInnerHTML:{__html:NAIL_SVG}}),
+          h('div',{className:'seg',role:'group','aria-label':'침범 부위'},
+            ['mat','bed'].map(function(k){return h('button',{key:k,type:'button','aria-pressed':zone===k,onClick:function(){setZone(k);}},k==='mat'?'조갑기질 (뿌리)':'조갑바닥 (밑 살)');}))),
+        h('div',{className:'panel','aria-live':'polite'},
+          h('h3',null,z.title),h('div',{className:'where'},z.where),
+          h('h4',null,'이럴 때 보이는 모양'),
+          h('ul',{className:'chips'},z.signs.map(function(x){return h('li',{key:x},x);})),
+          h('h4',null,'첫 선택으로 제시되는 치료'),
+          h('div',{className:'first'},h('strong',null,z.first),h('span',null,z.note)))),
+      h('div',{className:'facts'},DATA.facts.map(function(f){return h('div',{className:'fact',key:f.id},h('div',{className:'v'},f.value),h('div',{className:'l'},f.label));})));
+  }
+
+  function Guide(){
+    return h('div',{className:'guide'},DATA.guide.map(function(g){
+      return h('div',{className:'grow',key:g.id},h('div',{className:'s'},g.situation),h('div',{className:'f'},g.first),h('div',{className:'n'},g.note));}));
+  }
+
+  function Options(){
+    var a=useState('전체'),cat=a[0],setCat=a[1],b=useState(''),q=b[0],setQ=b[1];
+    var rows=useMemo(function(){
+      var t=q.trim().toLowerCase();
+      return DATA.treatments.filter(function(r){
+        if(cat!=='전체'&&r.category!==cat)return false;
+        return !t||(r.option+' '+r.when+' '+r.evidence+' '+r.caution).toLowerCase().indexOf(t)>=0;
+      });
+    },[cat,q]);
+    return h('div',null,
+      h('div',{className:'tools'},
+        h('div',{className:'cats',role:'group','aria-label':'치료 종류'},CATS.map(function(c){
+          return h('button',{key:c,type:'button',className:'chipbtn','data-c':c,'aria-pressed':cat===c,onClick:function(){setCat(c);}},c);})),
+        h('input',{id:'q',className:'search',type:'search',placeholder:'치료 이름·증상 검색','aria-label':'치료 검색',value:q,onChange:function(e){setQ(e.target.value);}}),
+        h('div',{className:'count'},rows.length+'개 표시')),
+      rows.length?h('div',{className:'cards'},rows.map(function(r){
+        return h('article',{className:'card',key:r.option,'data-c':r.category},
+          h('span',{className:'tag'},r.category),h('h3',null,r.option),
+          h('dl',null,[['쓰는 상황',r.when],['근거 요약',r.evidence],['주의',r.caution]].map(function(p){
+            return h(React.Fragment,{key:p[0]},h('dt',null,p[0]),h('dd',null,p[1]));})));
+      })):h('div',{className:'empty'},'조건에 맞는 치료가 없습니다. 검색어를 바꿔 보세요.'));
+  }
+
+  function Biologics(){
+    return h('div',null,
+      h('div',{className:'charts'},GROUPS.map(function(G){
+        var rows=DATA.outcomes.filter(function(r){return r.group===G[0];}).sort(function(a,b){return b.value-a.value;});
+        if(!rows.length)return null;
+        return h('div',{className:'chart',key:G[0]},h('h3',null,G[1]),h('p',null,G[2]),
+          rows.map(function(r,i){
+            return h('div',{className:'brow',key:r.id},h('span',null,r.drug),
+              h('div',{className:'track'},h('div',{className:'fill'+(i===0?' top':''),style:{width:Math.max(0,Math.min(100,r.value))+'%'}})),
+              h('span',{className:'v'},f1(r.value)));}));
+      })),
+      h('div',{className:'callout'},'시험과 분석이 서로 달라 다른 칸의 숫자를 곧바로 비교할 수 없습니다. 같은 칸 안에서만 비교하세요. 직접 맞붙은 시험은 익세키주맙 대 우스테키누맙, 비메키주맙 대 세쿠키누맙 두 건입니다.'));
+  }
+
+  function Fungus(){
+    return h('div',{className:'tbl'},h('table',null,
+      h('thead',null,h('tr',null,h('th',null,'특징'),h('th',null,'손톱건선'),h('th',null,'곰팡이'))),
+      h('tbody',null,DATA.ddx.map(function(r){return h('tr',{key:r.feature},h('td',null,r.feature),h('td',null,r.psoriasis),h('td',null,r.fungus));}))));
+  }
+
+  function Terms(){
+    return h('div',null,DATA.glossary.map(function(g){return h('details',{className:'g',key:g.term},h('summary',null,g.term),h('p',null,g.plain));}));
+  }
+
+  function ThemeBtn(p){
+    var labels={system:'◐ 시스템',light:'☀ 밝게',dark:'☾ 어둡게'};
+    return h('button',{type:'button',className:'themebtn',onClick:p.onClick,'aria-label':'화면 모드 바꾸기'},labels[p.theme]);
+  }
+
+  function App(){
+    var a=useState('cover'),active=a[0],setActive=a[1];
+    var t=useState(function(){try{return localStorage.getItem('nx-theme')||'system';}catch(e){return 'system';}}),theme=t[0],setTheme=t[1];
+    useEffect(function(){
+      var r=document.documentElement;
+      if(theme==='system')r.removeAttribute('data-theme');else r.setAttribute('data-theme',theme);
+      try{localStorage.setItem('nx-theme',theme);}catch(e){}
+    },[theme]);
+    useEffect(function(){
+      if(!('IntersectionObserver' in window))return;
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-30% 0px -60% 0px'});
+      ['cover','toc'].concat(CHAPTERS.map(function(c){return c.id;})).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
+      return function(){io.disconnect();};
+    },[]);
+    var cycle=function(){setTheme(theme==='system'?'light':theme==='light'?'dark':'system');};
+    var cur=function(id){return active===id;};
+    var chapContent={explore:h(Explorer),guide:h(Guide),options:h(Options),biologics:h(Biologics),fungus:h(Fungus),terms:h(Terms)};
+    var subs={
+      explore:'손톱은 뿌리(조갑기질)와 밑 살(조갑바닥)로 나뉩니다. 부위를 눌러 모양과 첫 선택 치료를 확인하세요.',
+      guide:'전문가 리뷰와 가이드라인에서 정리한 기준입니다. 실제 선택은 진료에서 정합니다.',
+      options:'종류를 고르거나 약 이름으로 찾아보세요.',
+      biologics:'막대가 길수록 손톱 병변이 더 많이 좋아진 비율입니다. 가장 높은 약은 주황색으로 표시했습니다.',
+      fungus:'두 병이 함께 있는 경우도 흔합니다. 모양만으로 구분이 어려우면 검사가 필요합니다.',
+      terms:'눌러서 쉬운 설명을 펼쳐 보세요.'
+    };
+    return h(React.Fragment,null,
+      h(Cover),
+      h('nav',{className:'topbar pad','aria-label':'장 이동'},
+        h('div',{className:'topbar-in'},
+          h('span',{className:'brand'},'손톱건선'),
+          h('div',{className:'tabs'},[{id:'toc',no:'',t:'목차'}].concat(CHAPTERS).map(function(c){
+            return h('a',{key:c.id,href:'#'+c.id,'aria-current':cur(c.id)},(c.no?c.no+' ':'')+c.t);})),
+          h(ThemeBtn,{theme:theme,onClick:cycle}))),
+      h('div',{className:'shell pad'},
+        h('aside',{className:'rail'},
+          h('h2',null,'CONTENTS'),
+          h('ol',null,[{id:'toc',no:'',t:'목차'}].concat(CHAPTERS).map(function(c){
+            return h('li',{key:c.id},h('a',{href:'#'+c.id,'aria-current':cur(c.id)},h('small',null,c.no||'—'),h('span',null,c.t)));})),
+          h(ThemeBtn,{theme:theme,onClick:cycle})),
+        h('main',null,
+          h(Toc),
+          CHAPTERS.map(function(c){return h(Chap,{key:c.id,c:c,sub:subs[c.id]},chapContent[c.id]);}),
+          h('div',{className:'note'},'공개 논문과 리뷰를 정리한 참고용 자료입니다. 약 선택, 용량, 시술 여부는 피부과 전문의 진료로 정하세요. 국내 보험 적용·허가 범위는 이번 조사에 포함하지 않았습니다.'))));
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+})();
+</script>
+</body>
+</html>
